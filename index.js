@@ -3,9 +3,6 @@
 const minASCII = 65;
 const maxASCII = 90;
 
-/******* round random *****************/
-const round = 6;
-
 const randomChar = () => {
   return String.fromCharCode(
     Math.floor(Math.random() * (maxASCII - minASCII) + minASCII)
@@ -24,7 +21,7 @@ const main = () => {
   console.log("คำตอบ :: ", answer);
 
   const results = [];
-  for (let i = 1; i <= round; i++) {
+  for (let i = 1; i <= Infinity; i++) {
     const str = randomStr();
     const arrStr = [...new Set(str.split(""))];
 
@@ -42,8 +39,10 @@ const main = () => {
         positionCount++;
       }
     }
-
     results.push({ str, totlCount, positionCount, round: i });
+    if (answer == str) {
+      break;
+    }
   }
 
   console.log("----คำตอบ----สุ่ม----ถูก/ทั้งหมด----ถูกตำเเหน่ง----ครั้งที่");
